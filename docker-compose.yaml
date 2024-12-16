@@ -2,6 +2,7 @@ version: '3.3'
 
 networks:
   ps:
+    driver: bridge
 
 services:
   server:
@@ -11,6 +12,9 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "8080:8080"
+    networks:
+      - ps
+
   postgres:
     container_name: postgres
     image: postgres:16.3
@@ -18,8 +22,6 @@ services:
       POSTGRES_DB: "main"
       POSTGRES_USER: "root"
       POSTGRES_PASSWORD: "root"
-    ports:
-      - "5432:5432"
     networks:
       - ps
 
@@ -30,8 +32,8 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - /path/to/local/dаta:/root/redis
-      - /path/to/local/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./data:/root/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PASSWORD=root
       - REDIS_PORT=6379
