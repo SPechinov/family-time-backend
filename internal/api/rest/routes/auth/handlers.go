@@ -48,7 +48,7 @@ func (c *Controller) registration(props base_controller.Props[RegistrationDTO]) 
 		return err
 	}
 
-	return props.EchoCTX.NoContent(http.StatusGone)
+	return props.EchoCTX.NoContent(http.StatusAccepted)
 }
 
 func (c *Controller) registrationConfirm(props base_controller.Props[RegistrationConfirmDTO]) error {
