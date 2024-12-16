@@ -15,11 +15,9 @@ jobs:
 
       - name: Change directory to family-time-backend
         run: |
-          ls
-          docker-compose down
+          docker compose down
 
       - name: Up docker
         run: |
-          ls
-          docker-compose up --build
+          docker compose up --build
     
