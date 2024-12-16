@@ -1,6 +1,16 @@
 version: '3.3'
 
+networks:
+  ps:
+
 services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
   postgres:
     container_name: postgres
     image: postgres:16.3
@@ -10,6 +20,9 @@ services:
       POSTGRES_PASSWORD: "root"
     ports:
       - "5432:5432"
+    networks:
+      - ps
+
   redis:
     container_name: redis
     image: redis:7.4.0
@@ -22,9 +35,15 @@ services:
     environment:
       - REDIS_PASSWORD=root
       - REDIS_PORT=6379
+    networks:
+      - ps
+
   mailhog:
+    container_name: mailhog
     image: mailhog/mailhog:latest
     restart: always
     ports:
       - "1025:1025"
       - "8025:8025"
+    networks:
+      - ps
