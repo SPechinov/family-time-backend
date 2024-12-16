@@ -12,11 +12,15 @@ jobs:
     steps:
       - name: Git pull
         run: |
+          cd /server/family-time-backend/
           git pull origin development
+
       - name: Down docker
         run: |
+          cd /server/family-time-backend/
           docker compose down
       - name: Up docker
         run: |
-           docker-compose up --build
+          cd /server/family-time-backend/
+          docker-compose up --build
     
