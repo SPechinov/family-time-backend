@@ -1,0 +1,22 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git pull
+        run: |
+          git pull origin main
+      - name: Down docker
+        run: |
+          docker compose down
+      - name: Up docker
+        run: |
+           docker-compose up --build
+    
