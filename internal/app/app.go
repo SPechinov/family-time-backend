@@ -19,7 +19,7 @@ var ctx = context.Background()
 
 func New() {
 	// Load cfg
-	cfg := pkgconfig.MustLoad("config/env.yaml")
+	cfg := pkgconfig.MustLoad("./config/env.yaml")
 
 	// Init logger
 	logger.MustInitGlobal(constants.Environment(cfg.ENV))
