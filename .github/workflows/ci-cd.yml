@@ -13,11 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2  # Клонирует репозиторий
 
-      - name: Change directory to family-time-backend
-        run: |
-          docker compose down
-
-      - name: Up docker
-        run: |
-          docker compose up --build
+#      - name: Change directory to family-time-backend
+#        run: |
+#          docker compose down
+#
+#      - name: Up docker
+#        run: |
+#          docker compose up --build
     
